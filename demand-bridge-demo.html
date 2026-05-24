@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Demand Bridge – B2B Marketing Intelligence Platform. Expert-crafted demand generation strategies, ABM playbooks, and learning resources for modern revenue teams.">
+  <title>Demand Bridge | B2B Marketing Learning Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="demand-bridge-theme/style.css">
+  <style>
+    /* Demo-specific overrides and additions */
+    .demo-banner {
+      background: linear-gradient(90deg, #1a2b5e, #2d4080);
+      color: rgba(255,255,255,0.9);
+      text-align: center;
+      padding: 0.5rem 1rem;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      position: relative;
+      z-index: 1000;
+    }
+    .demo-banner a { color: #f15a24; text-decoration: underline; }
+
+    /* Ensure logo SVG renders inline */
+    .logo-icon svg { display: block; }
+
+    /* Nav search button style */
+    #searchToggle {
+      color: rgba(255,255,255,0.9);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      transition: color 0.25s, background 0.25s;
+      display: flex;
+      align-items: center;
+    }
+    #searchToggle:hover { background: rgba(255,255,255,0.1); }
+    .site-header.scrolled #searchToggle { color: var(--color-gray-700); }
+
+    /* Gradient text fix for Firefox */
+    @-moz-document url-prefix() {
+      .hero-title .highlight {
+        background: none;
+        -webkit-text-fill-color: unset;
+        color: #f15a24;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Demo banner -->
+<div class="demo-banner">
+  🎯 <strong>Client Demo Preview</strong> — Demand Bridge Website | All pages are interactive &amp; mobile-responsive
+</div>
+
+<!-- Reading Progress -->
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+
+<!-- Skip link -->
+<a class="sr-only" href="#main-content">Skip to content</a>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="site-header transparent" id="siteHeader" role="banner">
+  <nav class="nav-wrapper" role="navigation" aria-label="Main Navigation">
+
+    <a href="#" class="nav-logo" aria-label="Demand Bridge – Home">
+      <div class="logo-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+          <path d="M2 17l10 5 10-5"/>
+          <path d="M2 12l10 5 10-5"/>
+        </svg>
+      </div>
+      <span class="logo-text">Demand<span>Bridge</span></span>
+    </a>
+
+    <ul class="nav-menu" role="list">
+      <li><a href="#">Home</a></li>
+      <li class="has-dropdown">
+        <a href="#" aria-haspopup="true" aria-expanded="false">Solutions ▾</a>
+        <ul class="dropdown-menu" role="list">
+          <li><a href="#">🎯 Demand Generation</a></li>
+          <li><a href="#">🏢 Account-Based Marketing</a></li>
+          <li><a href="#">💼 Sales Enablement</a></li>
+          <li><a href="#">📊 Revenue Operations</a></li>
+          <li><a href="#">✍️ Content Strategy</a></li>
+        </ul>
+      </li>
+      <li class="has-dropdown">
+        <a href="#blog-section" aria-haspopup="true" aria-expanded="false">Learning Center ▾</a>
+        <ul class="dropdown-menu" role="list">
+          <li><a href="#blog-section">📚 All Articles</a></li>
+          <li><a href="#">📖 Guides & Playbooks</a></li>
+          <li><a href="#">💡 Case Studies</a></li>
+          <li><a href="#">📊 Industry Reports</a></li>
+          <li><a href="#">🎥 Webinars</a></li>
+        </ul>
+      </li>
+      <li><a href="#about-section">About</a></li>
+      <li><a href="#contact-section">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button id="searchToggle" aria-label="Search" aria-expanded="false">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+      </button>
+      <a href="#contact-section" class="btn nav-cta btn-sm">Get Started →</a>
+    </div>
+
+    <button class="hamburger" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileNav">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<!-- Mobile Nav -->
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile Navigation" aria-hidden="true">
+  <ul role="list">
+    <li><a href="#">🏠 Home</a></li>
+    <li><a href="#blog-section">📚 Learning Center</a></li>
+    <li><a href="#">📖 Guides & Playbooks</a></li>
+    <li><a href="#">💡 Case Studies</a></li>
+    <li><a href="#about-section">👥 About Us</a></li>
+    <li><a href="#contact-section" class="mobile-cta">Get Started →</a></li>
+  </ul>
+</nav>
+
+<!-- Search Overlay -->
+<div class="search-overlay" id="searchOverlay" role="dialog" aria-label="Search" aria-hidden="true">
+  <div class="search-box">
+    <div class="search-input-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="search" class="search-input" id="searchInput" placeholder="Search articles, guides, topics…" autocomplete="off">
+      <button class="search-close" id="searchClose" aria-label="Close search">✕</button>
+    </div>
+    <p style="color:rgba(255,255,255,0.5);font-size:0.875rem;margin-top:1rem;text-align:center;">Press Escape to close</p>
+  </div>
+</div>
+
+<!-- ============================================================
+     MAIN CONTENT
+     ============================================================ -->
+<main id="main-content" role="main">
+
+  <!-- ==================== HERO ==================== -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="hero-bg-grid"></div>
+      <div class="hero-bg-glow glow-1"></div>
+      <div class="hero-bg-glow glow-2"></div>
+    </div>
+
+    <div class="hero-wrapper">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          B2B Marketing Intelligence Platform
+        </div>
+
+        <h1 class="hero-title" id="hero-title">
+          Bridge the Gap Between
+          <span class="highlight">Demand &amp; Revenue</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Access expert-crafted B2B marketing playbooks, demand generation strategies, and actionable insights — built to help modern revenue teams grow smarter and faster.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#blog-section" class="btn btn-primary btn-lg">
+            Explore Learning Center <span class="arrow" aria-hidden="true">→</span>
+          </a>
+          <a href="#" class="btn btn-outline btn-lg">Free Guides</a>
+        </div>
+
+        <div class="hero-stats" role="list" aria-label="Key statistics">
+          <div class="hero-stat" role="listitem">
+            <div class="hero-stat-value" data-count="500" data-suffix="+">0</div>
+            <div class="hero-stat-label">Articles Published</div>
+          </div>
+          <div class="hero-stat" role="listitem">
+            <div class="hero-stat-value" data-count="50" data-suffix="K+">0</div>
+            <div class="hero-stat-label">Monthly Readers</div>
+          </div>
+          <div class="hero-stat" role="listitem">
+            <div class="hero-stat-value" data-count="120" data-suffix="+">0</div>
+            <div class="hero-stat-label">B2B Experts</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Visual -->
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-card-stack">
+          <div class="hero-card hero-card-main">
+            <div class="hero-card-header">
+              <div class="hero-card-icon">🎯</div>
+              <div><div class="hero-card-tag">Demand Generation</div></div>
+            </div>
+            <h3 class="hero-card-title">Q4 Pipeline Acceleration Playbook</h3>
+            <p class="hero-card-desc">12-step framework used by 200+ B2B companies to 3x their qualified pipeline before year-end.</p>
+            <div class="hero-card-metrics">
+              <div class="metric"><div class="metric-value">3×</div><div class="metric-label">Pipeline</div></div>
+              <div class="metric"><div class="metric-value">42%</div><div class="metric-label">Win Rate</div></div>
+              <div class="metric"><div class="metric-value">18d</div><div class="metric-label">Faster Close</div></div>
+            </div>
+          </div>
+          <div class="hero-card-small">
+            <div class="hero-mini-card">
+              <div class="mini-card-icon">📈</div>
+              <div class="mini-card-val">+68%</div>
+              <div class="mini-card-label">MQL Growth</div>
+            </div>
+            <div class="hero-mini-card">
+              <div class="mini-card-icon">🏆</div>
+              <div class="mini-card-val">Top 1%</div>
+              <div class="mini-card-label">B2B Content</div>
+            </div>
+            <div class="hero-mini-card">
+              <div class="mini-card-icon">🤝</div>
+              <div class="mini-card-val">500+</div>
+              <div class="mini-card-label">Companies</div>
+            </div>
+          </div>
+          <div class="hero-notification">
+            <div class="notif-icon">✅</div>
+            <div class="notif-text">
+              <div class="notif-title">New Guide Published</div>
+              <div class="notif-sub">ABM Strategy 2025 — Free Download</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TRUST BAR ==================== -->
+  <div class="trust-bar">
+    <div class="container">
+      <div class="trust-bar-inner">
+        <span class="trust-label">Trusted by leading B2B teams at:</span>
+        <div class="trust-logos" role="list">
+          <span class="trust-logo" role="listitem">Salesforce</span>
+          <span class="trust-logo" role="listitem">HubSpot</span>
+          <span class="trust-logo" role="listitem">Gartner</span>
+          <span class="trust-logo" role="listitem">Forrester</span>
+          <span class="trust-logo" role="listitem">G2</span>
+          <span class="trust-logo" role="listitem">Drift</span>
+          <span class="trust-logo" role="listitem">Outreach</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== FEATURES ==================== -->
+  <section class="section features-section" aria-labelledby="features-title">
+    <div class="container">
+      <div class="section-header--center fade-in">
+        <span class="section-label">What We Cover</span>
+        <h2 class="section-title" id="features-title">Everything You Need to Win in B2B</h2>
+        <p class="section-desc">From demand generation fundamentals to advanced ABM playbooks — our learning center covers every stage of the modern B2B revenue journey.</p>
+      </div>
+      <div class="features-grid stagger">
+        <article class="feature-card fade-in">
+          <div class="feature-icon orange" aria-hidden="true">🎯</div>
+          <h3 class="feature-title">Demand Generation</h3>
+          <p class="feature-desc">Master the art of creating awareness and interest. Learn proven channel strategies, MQL qualification frameworks, and measurement models used by top B2B teams.</p>
+          <a href="#blog-section" class="feature-link">Explore articles →</a>
+        </article>
+        <article class="feature-card fade-in">
+          <div class="feature-icon blue" aria-hidden="true">🏢</div>
+          <h3 class="feature-title">Account-Based Marketing</h3>
+          <p class="feature-desc">Deep-dive into ABM strategy, target account selection, personalization at scale, and measuring account engagement across every touchpoint.</p>
+          <a href="#blog-section" class="feature-link">Explore articles →</a>
+        </article>
+        <article class="feature-card fade-in">
+          <div class="feature-icon green" aria-hidden="true">💼</div>
+          <h3 class="feature-title">Sales Enablement</h3>
+          <p class="feature-desc">Align sales and marketing, build winning battle cards, create effective discovery call frameworks, and shorten your sales cycle by 30%+.</p>
+          <a href="#blog-section" class="feature-link">Explore articles →</a>
+        </article>
+        <article class="feature-card fade-in">
+          <div class="feature-icon purple" aria-hidden="true">✍️</div>
+          <h3 class="feature-title">Content Strategy</h3>
+          <p class="feature-desc">Build content that converts at every funnel stage. Learn B2B SEO, thought leadership, gated content best practices, and distribution playbooks.</p>
+          <a href="#blog-section" class="feature-link">Explore articles →</a>
+        </article>
+        <article class="feature-card fade-in">
+          <div class="feature-icon red" aria-hidden="true">📊</div>
+          <h3 class="feature-title">Revenue Operations</h3>
+          <p class="feature-desc">Unify your go-to-market teams, optimize your tech stack, improve data quality, and build a scalable, predictable revenue engine.</p>
+          <a href="#blog-section" class="feature-link">Explore articles →</a>
+        </article>
+        <article class="feature-card fade-in">
+          <div class="feature-icon orange" aria-hidden="true">🔬</div>
+          <h3 class="feature-title">B2B Research &amp; Reports</h3>
+          <p class="feature-desc">Access original research, benchmark studies, and industry reports — data-driven insights to benchmark your strategy and set direction.</p>
+          <a href="#" class="feature-link">View reports →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== STATS ==================== -->
+  <section class="stats-section" aria-labelledby="stats-title">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:3rem;">
+        <span class="section-label" style="color:#ff8c60;">Our Impact</span>
+        <h2 class="section-title" id="stats-title" style="color:white;">Numbers That Speak for Themselves</h2>
+      </div>
+      <div class="stats-grid stagger" role="list">
+        <div class="stat-item fade-in" role="listitem">
+          <div class="stat-number" data-count="500" data-suffix="+">0</div>
+          <div class="stat-label">Expert Articles</div>
+          <div class="stat-sublabel">Peer-reviewed &amp; updated</div>
+        </div>
+        <div class="stat-item fade-in" role="listitem">
+          <div class="stat-number" data-count="50" data-suffix="K+">0</div>
+          <div class="stat-label">Monthly Readers</div>
+          <div class="stat-sublabel">B2B professionals</div>
+        </div>
+        <div class="stat-item fade-in" role="listitem">
+          <div class="stat-number" data-count="98" data-suffix="%">0</div>
+          <div class="stat-label">Satisfaction Rate</div>
+          <div class="stat-sublabel">Reader satisfaction score</div>
+        </div>
+        <div class="stat-item fade-in" role="listitem">
+          <div class="stat-number" data-count="120" data-suffix="+">0</div>
+          <div class="stat-label">Expert Contributors</div>
+          <div class="stat-sublabel">Industry practitioners</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CATEGORIES ==================== -->
+  <section class="section categories-section" aria-labelledby="categories-title">
+    <div class="container">
+      <div class="section-header--center fade-in">
+        <span class="section-label">Browse by Topic</span>
+        <h2 class="section-title" id="categories-title">Find Your Learning Path</h2>
+        <p class="section-desc">Structured learning paths for every B2B role — from marketing managers to CROs.</p>
+      </div>
+      <div class="categories-grid stagger">
+        <a href="#" class="category-card fade-in"><span class="category-emoji">🎯</span><div class="category-name">Demand Generation</div><div class="category-count">85+ articles</div></a>
+        <a href="#" class="category-card fade-in"><span class="category-emoji">🏢</span><div class="category-name">ABM</div><div class="category-count">70+ articles</div></a>
+        <a href="#" class="category-card fade-in"><span class="category-emoji">💼</span><div class="category-name">Sales Enablement</div><div class="category-count">60+ articles</div></a>
+        <a href="#" class="category-card fade-in"><span class="category-emoji">✍️</span><div class="category-name">Content Strategy</div><div class="category-count">90+ articles</div></a>
+        <a href="#" class="category-card fade-in"><span class="category-emoji">📊</span><div class="category-name">Revenue Ops</div><div class="category-count">45+ articles</div></a>
+        <a href="#" class="category-card fade-in"><span class="category-emoji">🚀</span><div class="category-name">B2B Marketing</div><div class="category-count">110+ articles</div></a>
+        <a href="#" class="category-card fade-in"><span class="category-emoji">📑</span><div class="category-name">Research &amp; Reports</div><div class="category-count">30+ reports</div></a>
+        <a href="#" class="category-card fade-in"><span class="category-emoji">🗺️</span><div class="category-name">Playbooks</div><div class="category-count">25+ playbooks</div></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== BLOG SECTION ==================== -->
+  <section class="section blog-section" id="blog-section" aria-labelledby="blog-section-title">
+    <div class="container">
+      <div class="flex-between" style="margin-bottom:2.5rem;flex-wrap:wrap;gap:1rem;">
+        <div>
+          <span class="section-label">Learning Center</span>
+          <h2 class="section-title" id="blog-section-title">Latest Insights &amp; Articles</h2>
+        </div>
+        <a href="#" class="btn btn-outline-dark">View All Articles →</a>
+      </div>
+
+      <div class="blog-filters" role="tablist">
+        <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
+        <button class="filter-btn" data-filter="demand-generation" role="tab" aria-selected="false">Demand Generation</button>
+        <button class="filter-btn" data-filter="abm" role="tab" aria-selected="false">ABM</button>
+        <button class="filter-btn" data-filter="sales" role="tab" aria-selected="false">Sales</button>
+        <button class="filter-btn" data-filter="content" role="tab" aria-selected="false">Content</button>
+        <button class="filter-btn" data-filter="revops" role="tab" aria-selected="false">RevOps</button>
+      </div>
+
+      <div class="blog-grid" id="blogGrid">
+
+        <!-- FEATURED POST -->
+        <article class="card featured fade-in" data-category="demand-generation">
+          <a href="#" class="card-img" tabindex="-1" aria-hidden="true">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a2b5e 0%,#2d4080 50%,#f15a24 150%);display:flex;align-items:center;justify-content:center;font-size:6rem;">🎯</div>
+          </a>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="badge badge-secondary">Demand Generation</span>
+              <span class="card-meta-dot"></span>
+              <span>8 min read</span>
+            </div>
+            <h3 class="card-title"><a href="#">10 Demand Generation Strategies That Actually Drive Revenue in 2025</a></h3>
+            <p class="card-excerpt">Discover the demand generation tactics that top B2B companies are using to consistently fill their pipeline with high-quality leads — backed by real data from 500+ revenue teams. Updated for 2025's changing buyer landscape.</p>
+            <div class="card-footer">
+              <div class="card-author">
+                <div class="card-author-avatar" style="background:linear-gradient(135deg,#1a2b5e,#f15a24);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:0.75rem;">SC</div>
+                <div>
+                  <div class="card-author-name">Sarah Chen</div>
+                  <div class="card-read-time">May 18, 2025</div>
+                </div>
+              </div>
+              <a href="#" class="btn btn-ghost btn-sm">Read →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- POST 2 -->
+        <article class="card fade-in" data-category="abm">
+          <a href="#" class="card-img" tabindex="-1" aria-hidden="true">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg,#00b4d8,#0090b0);display:flex;align-items:center;justify-content:center;font-size:3rem;">🏢</div>
+          </a>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="badge badge-secondary">ABM</span>
+              <span class="card-meta-dot"></span>
+              <span>12 min read</span>
+            </div>
+            <h3 class="card-title"><a href="#">The Complete ABM Playbook for Enterprise B2B Teams</a></h3>
+            <p class="card-excerpt">A step-by-step guide to running account-based marketing campaigns that land with your most strategic target accounts.</p>
+            <div class="card-footer">
+              <div class="card-author">
+                <div class="card-author-avatar" style="background:linear-gradient(135deg,#00b4d8,#0090b0);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:0.75rem;">MW</div>
+                <div>
+                  <div class="card-author-name">Marcus Webb</div>
+                  <div class="card-read-time">May 15, 2025</div>
+                </div>
+              </div>
+              <a href="#" class="btn btn-ghost btn-sm">Read →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- POST 3 -->
+        <article class="card fade-in" data-category="revops">
+          <a href="#" class="card-img" tabindex="-1" aria-hidden="true">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg,#805ad5,#553c9a);display:flex;align-items:center;justify-content:center;font-size:3rem;">📊</div>
+          </a>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="badge badge-secondary">Revenue Operations</span>
+              <span class="card-meta-dot"></span>
+              <span>6 min read</span>
+            </div>
+            <h3 class="card-title"><a href="#">RevOps Metrics Every CRO Should Track in 2025</a></h3>
+            <p class="card-excerpt">From pipeline velocity to win rate by source — the key RevOps metrics that power data-driven growth decisions for modern B2B teams.</p>
+            <div class="card-footer">
+              <div class="card-author">
+                <div class="card-author-avatar" style="background:linear-gradient(135deg,#805ad5,#553c9a);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:0.75rem;">JO</div>
+                <div>
+                  <div class="card-author-name">James Okafor</div>
+                  <div class="card-read-time">May 12, 2025</div>
+                </div>
+              </div>
+              <a href="#" class="btn btn-ghost btn-sm">Read →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- POST 4 -->
+        <article class="card fade-in" data-category="content">
+          <a href="#" class="card-img" tabindex="-1" aria-hidden="true">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg,#38a169,#276749);display:flex;align-items:center;justify-content:center;font-size:3rem;">✍️</div>
+          </a>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="badge badge-secondary">Content Strategy</span>
+              <span class="card-meta-dot"></span>
+              <span>9 min read</span>
+            </div>
+            <h3 class="card-title"><a href="#">How to Build a B2B Content Engine That Actually Converts</a></h3>
+            <p class="card-excerpt">Stop creating content nobody reads. Here's how top B2B brands build systematic content operations that drive real pipeline and MQLs.</p>
+            <div class="card-footer">
+              <div class="card-author">
+                <div class="card-author-avatar" style="background:linear-gradient(135deg,#38a169,#276749);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:0.75rem;">PS</div>
+                <div>
+                  <div class="card-author-name">Priya Sharma</div>
+                  <div class="card-read-time">May 10, 2025</div>
+                </div>
+              </div>
+              <a href="#" class="btn btn-ghost btn-sm">Read →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- POST 5 -->
+        <article class="card fade-in" data-category="sales">
+          <a href="#" class="card-img" tabindex="-1" aria-hidden="true">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg,#f15a24,#d14a16);display:flex;align-items:center;justify-content:center;font-size:3rem;">💼</div>
+          </a>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="badge badge-secondary">Sales Enablement</span>
+              <span class="card-meta-dot"></span>
+              <span>7 min read</span>
+            </div>
+            <h3 class="card-title"><a href="#">Sales Enablement 2.0: Closing the Loop Between Marketing &amp; Revenue</a></h3>
+            <p class="card-excerpt">Modern sales enablement goes far beyond battle cards. Learn how to build a true feedback loop that accelerates deals and shortens cycles.</p>
+            <div class="card-footer">
+              <div class="card-author">
+                <div class="card-author-avatar" style="background:linear-gradient(135deg,#f15a24,#d14a16);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:0.75rem;">DP</div>
+                <div>
+                  <div class="card-author-name">David Park</div>
+                  <div class="card-read-time">May 8, 2025</div>
+                </div>
+              </div>
+              <a href="#" class="btn btn-ghost btn-sm">Read →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- POST 6 -->
+        <article class="card fade-in" data-category="demand-generation">
+          <a href="#" class="card-img" tabindex="-1" aria-hidden="true">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg,#e53e3e,#9b2c2c);display:flex;align-items:center;justify-content:center;font-size:3rem;">🚀</div>
+          </a>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="badge badge-secondary">B2B Marketing</span>
+              <span class="card-meta-dot"></span>
+              <span>10 min read</span>
+            </div>
+            <h3 class="card-title"><a href="#">The B2B Buyer Journey Has Changed — Here's Your New Playbook</a></h3>
+            <p class="card-excerpt">68% of B2B buyers prefer to self-educate before talking to sales. Discover how to show up at every touchpoint of the modern buyer journey.</p>
+            <div class="card-footer">
+              <div class="card-author">
+                <div class="card-author-avatar" style="background:linear-gradient(135deg,#e53e3e,#9b2c2c);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:0.75rem;">ER</div>
+                <div>
+                  <div class="card-author-name">Emily Ross</div>
+                  <div class="card-read-time">May 5, 2025</div>
+                </div>
+              </div>
+              <a href="#" class="btn btn-ghost btn-sm">Read →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- POST 7 -->
+        <article class="card fade-in" data-category="abm">
+          <a href="#" class="card-img" tabindex="-1" aria-hidden="true">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a2b5e,#00b4d8);display:flex;align-items:center;justify-content:center;font-size:3rem;">📑</div>
+          </a>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="badge badge-secondary">Research</span>
+              <span class="card-meta-dot"></span>
+              <span>15 min read</span>
+            </div>
+            <h3 class="card-title"><a href="#">State of B2B Demand Gen 2025: Key Findings &amp; Trends</a></h3>
+            <p class="card-excerpt">We surveyed 800+ B2B marketing leaders on their demand generation investments, top challenges, and what's actually working this year.</p>
+            <div class="card-footer">
+              <div class="card-author">
+                <div class="card-author-avatar" style="background:linear-gradient(135deg,#1a2b5e,#00b4d8);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:0.75rem;">DB</div>
+                <div>
+                  <div class="card-author-name">DB Research Team</div>
+                  <div class="card-read-time">May 2, 2025</div>
+                </div>
+              </div>
+              <a href="#" class="btn btn-ghost btn-sm">Read →</a>
+            </div>
+          </div>
+        </article>
+      </div><!-- #blogGrid -->
+
+      <div class="blog-cta-wrap fade-in">
+        <a href="#" class="btn btn-primary btn-lg">Browse All Articles →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TESTIMONIALS ==================== -->
+  <section class="section testimonials-section" aria-labelledby="testimonials-title">
+    <div class="container">
+      <div class="section-header--center fade-in">
+        <span class="section-label">What Our Readers Say</span>
+        <h2 class="section-title" id="testimonials-title">Trusted by B2B Revenue Leaders</h2>
+      </div>
+      <div class="testimonials-grid stagger">
+        <article class="testimonial-card fade-in">
+          <div class="testimonial-quote" aria-hidden="true">&ldquo;</div>
+          <div class="testimonial-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote class="testimonial-text">"Demand Bridge's ABM playbook completely transformed how our team approaches enterprise accounts. We went from 12% to 38% win rate on strategic accounts in just one quarter."</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">👩</div>
+            <div>
+              <div class="testimonial-name">Jennifer Walsh</div>
+              <div class="testimonial-role">VP of Demand Generation, TechCorp Inc.</div>
+            </div>
+          </div>
+        </article>
+        <article class="testimonial-card fade-in">
+          <div class="testimonial-quote" aria-hidden="true">&ldquo;</div>
+          <div class="testimonial-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote class="testimonial-text">"I recommend Demand Bridge to every B2B marketer I mentor. The content is practitioner-written, immediately applicable, and constantly updated. It's our team's primary learning resource."</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">👨</div>
+            <div>
+              <div class="testimonial-name">Marcus Osei</div>
+              <div class="testimonial-role">Chief Revenue Officer, Scale Ventures</div>
+            </div>
+          </div>
+        </article>
+        <article class="testimonial-card fade-in">
+          <div class="testimonial-quote" aria-hidden="true">&ldquo;</div>
+          <div class="testimonial-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote class="testimonial-text">"The RevOps content on Demand Bridge helped us build our entire go-to-market infrastructure. Their pipeline visibility frameworks are now company-wide standards."</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">👩</div>
+            <div>
+              <div class="testimonial-name">Priya Agarwal</div>
+              <div class="testimonial-role">Head of RevOps, SaaS Global Ltd.</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ABOUT SECTION ==================== -->
+  <section class="section" id="about-section" style="background:white;" aria-labelledby="about-home-title">
+    <div class="container">
+      <div class="about-mission-grid">
+        <div class="about-mission-content fade-in-left">
+          <span class="section-label">About Demand Bridge</span>
+          <h2 class="section-title" id="about-home-title">Built by B2B Practitioners, for B2B Teams</h2>
+          <p class="about-mission-desc">We're a team of former CMOs, demand gen leaders, RevOps experts, and content strategists who got tired of generic, surface-level B2B content. So we built the resource we always wished existed.</p>
+          <p class="about-mission-desc">Every article is written or reviewed by active B2B practitioners — people doing the work right now, not theorizing about it. Our editorial independence is non-negotiable.</p>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem;">
+            <a href="#" class="btn btn-primary">Meet the Team →</a>
+            <a href="#contact-section" class="btn btn-outline-dark">Work With Us</a>
+          </div>
+        </div>
+        <div class="about-mission-visual fade-in-right">
+          <div class="about-img-wrap">
+            <span aria-hidden="true" style="font-size:6rem;">🌉</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== NEWSLETTER ==================== -->
+  <section class="newsletter-section" aria-labelledby="newsletter-title">
+    <div class="newsletter-content">
+      <span class="badge badge-white" style="margin-bottom:1.5rem;">📬 Weekly Newsletter</span>
+      <h2 class="newsletter-title" id="newsletter-title">Stay Ahead of the B2B Curve</h2>
+      <p class="newsletter-desc">Join 50,000+ B2B professionals. Get the week's best demand gen insights, ABM strategies, and industry news — delivered every Tuesday.</p>
+      <form class="newsletter-form" id="newsletterForm" novalidate>
+        <label for="newsletterEmail" class="sr-only">Email address</label>
+        <input type="email" id="newsletterEmail" name="email" class="newsletter-input" placeholder="Enter your work email" required autocomplete="email">
+        <button type="submit" class="newsletter-btn">Subscribe Free</button>
+      </form>
+      <p class="newsletter-privacy">No spam, ever. Unsubscribe anytime. We respect your privacy.</p>
+    </div>
+  </section>
+
+  <!-- ==================== CONTACT SECTION ==================== -->
+  <section class="contact-section" id="contact-section" aria-labelledby="contact-home-title">
+    <div class="contact-grid">
+      <div class="contact-info fade-in-left">
+        <h2 class="contact-info-title" id="contact-home-title">Let's Talk B2B</h2>
+        <p class="contact-info-desc">Have a question, partnership idea, or want to contribute to Demand Bridge? Our team responds within one business day.</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-icon">📧</div>
+            <div><div class="contact-label">Email</div><a href="mailto:hello@demandbridge.com" class="contact-val" style="color:var(--color-secondary);">hello@demandbridge.com</a></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📝</div>
+            <div><div class="contact-label">Editorial</div><a href="mailto:editorial@demandbridge.com" class="contact-val" style="color:var(--color-secondary);">editorial@demandbridge.com</a></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🤝</div>
+            <div><div class="contact-label">Partnerships</div><a href="mailto:partnerships@demandbridge.com" class="contact-val" style="color:var(--color-secondary);">partnerships@demandbridge.com</a></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div><div class="contact-label">Location</div><p class="contact-val">San Francisco, CA · United States</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-wrap fade-in-right">
+        <h3 class="form-title">Send Us a Message</h3>
+        <p class="form-subtitle">We'll get back to you within one business day.</p>
+        <form id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName" class="form-label">First Name *</label>
+              <input type="text" id="firstName" name="first_name" class="form-input" required placeholder="Sarah">
+            </div>
+            <div class="form-group">
+              <label for="lastName" class="form-label">Last Name *</label>
+              <input type="text" id="lastName" name="last_name" class="form-input" required placeholder="Chen">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="contactEmail" class="form-label">Work Email *</label>
+            <input type="email" id="contactEmail" name="email" class="form-input" required placeholder="sarah@company.com">
+          </div>
+          <div class="form-group">
+            <label for="company" class="form-label">Company</label>
+            <input type="text" id="company" name="company" class="form-input" placeholder="Your Company">
+          </div>
+          <div class="form-group">
+            <label for="subject" class="form-label">Topic</label>
+            <select id="subject" name="subject" class="form-select">
+              <option value="">Select a topic</option>
+              <option>Editorial / Article Submission</option>
+              <option>Partnership Opportunity</option>
+              <option>Sponsorship</option>
+              <option>Speaking / Webinar</option>
+              <option>Content Feedback</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message" class="form-label">Message *</label>
+            <textarea id="message" name="message" class="form-textarea" required rows="4" placeholder="Tell us about your inquiry..."></textarea>
+          </div>
+          <div id="contactSuccess" style="display:none;padding:1rem;background:rgba(56,161,105,0.1);border:1px solid rgba(56,161,105,0.3);border-radius:0.75rem;font-size:0.875rem;color:#276749;margin-bottom:1rem;"></div>
+          <button type="submit" class="form-submit" id="contactSubmit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main><!-- #main-content -->
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="footer-logo">
+          <div class="logo-icon">
+            <svg width="42" height="42" viewBox="0 0 42 42" style="border-radius:8px;background:linear-gradient(135deg,#f15a24,#d14a16)">
+              <g transform="translate(9,9)" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                <path d="M2 17l10 5 10-5"/>
+                <path d="M2 12l10 5 10-5"/>
+              </g>
+            </svg>
+          </div>
+          <span class="footer-logo-text">Demand<span>Bridge</span></span>
+        </a>
+        <p class="footer-tagline">Your go-to resource for B2B marketing intelligence, demand generation strategies, and actionable learning content for modern revenue teams.</p>
+        <div class="footer-social">
+          <a href="#" class="social-link" aria-label="LinkedIn">in</a>
+          <a href="#" class="social-link" aria-label="Twitter/X">𝕏</a>
+          <a href="#" class="social-link" aria-label="YouTube">▶</a>
+          <a href="#" class="social-link" aria-label="Instagram">📷</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-col-title">Company</h3>
+        <ul class="footer-links">
+          <li><a href="#about-section">About Us</a></li>
+          <li><a href="#">Our Team</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press &amp; Media</a></li>
+          <li><a href="#">Partners</a></li>
+          <li><a href="#contact-section">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-col-title">Resources</h3>
+        <ul class="footer-links">
+          <li><a href="#blog-section">Blog</a></li>
+          <li><a href="#">Guides &amp; Playbooks</a></li>
+          <li><a href="#">Case Studies</a></li>
+          <li><a href="#">Industry Reports</a></li>
+          <li><a href="#">Webinars</a></li>
+          <li><a href="#">B2B Glossary</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-col-title">Topics</h3>
+        <ul class="footer-links">
+          <li><a href="#">Demand Generation</a></li>
+          <li><a href="#">Account-Based Marketing</a></li>
+          <li><a href="#">Sales Enablement</a></li>
+          <li><a href="#">Content Strategy</a></li>
+          <li><a href="#">Revenue Operations</a></li>
+          <li><a href="#">B2B Marketing</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2025 Demand Bridge. All rights reserved. Built for B2B excellence.</p>
+      <nav class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll to Top -->
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+
+<!-- Cookie Notice -->
+<div class="cookie-notice" id="cookieNotice" role="alert">
+  <p class="cookie-text">We use cookies to enhance your experience and analyze site traffic. By continuing, you agree to our <a href="#">Cookie Policy</a>.</p>
+  <button class="cookie-accept" id="cookieAccept">Accept</button>
+</div>
+
+<script src="demand-bridge-theme/assets/js/main.js"></script>
+</body>
+</html>
